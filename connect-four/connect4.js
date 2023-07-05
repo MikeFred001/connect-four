@@ -36,27 +36,31 @@ function makeBoardMatrix() {
 function makeHtmlBoard() {
   //const htmlBoard = document.getElementById('board');  Moved to top
 
-  // TODO: add comment for this code
-  const top = document.createElement("tr");
-  top.setAttribute("id", "column-top");
-  top.addEventListener("click", handleClick);
+  // Creates the top row and adds an event listener
+  const topRow = document.createElement("tr");
+  topRow.setAttribute("id", "column-top");
+  topRow.addEventListener("click", handleClick);
 
-  // TODO: add comment for this code
+  // Adds cells to top row
   for (let x = 0; x < WIDTH; x++) {
     const headCell = document.createElement("td");
     headCell.setAttribute("id", `top-${x}`);
-    top.append(headCell);
+    topRow.append(headCell);
   }
-  htmlBoard.append(top);
+  htmlBoard.append(topRow);
 
   // dynamically creates the main part of html board
   // uses HEIGHT to create table rows
   // uses WIDTH to create table cells for each row
   for (let y = 0; y < HEIGHT; y++) {
     // TODO: Create a table row element and assign to a "row" variable
+    const row = document.createElement("tr");
+    row.setAttribute("id", `row-${y}`);
+    row.setAttribute("rowNum", `${y}`);
 
     for (let x = 0; x < WIDTH; x++) {
       // TODO: Create a table cell element and assign to a "cell" variable
+      const cell = document.createElement("td");
 
       // TODO: add an id, c-y-x, to the above table cell element
       // you'll use this later, so make sure you use c-y-x

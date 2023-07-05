@@ -9,7 +9,6 @@
 
 const WIDTH = 7;
 const HEIGHT = 6;
-const htmlBoard = document.getElementById('board');
 
 const currPlayer = 1; // active player: 1 or 2
 let board = []; // array of rows, each row is array of cells  (board[y][x])
@@ -18,9 +17,9 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
 
-function makeBoardMatrix() {
+function makeBoard() {
   const board = [];
-  for (let i = 0; i < HEIGHT; i++) {
+  for (let i = 0; i < HEIGHT + 1; i++) {
     const row = [];
     for (let j = 0; j < WIDTH; j++) {
       row.push(null);
@@ -34,7 +33,7 @@ function makeBoardMatrix() {
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
 function makeHtmlBoard() {
-  //const htmlBoard = document.getElementById('board');  Moved to top
+  const htmlBoard = document.getElementById('board');
 
   // Creates the top row and adds an event listener
   const topRow = document.createElement("tr");
@@ -52,24 +51,16 @@ function makeHtmlBoard() {
   // dynamically creates the main part of html board
   // uses HEIGHT to create table rows
   // uses WIDTH to create table cells for each row
-  for (let y = 0; y < HEIGHT; y++) {
-    // TODO: Create a table row element and assign to a "row" variable
+  for (let y = 0; y < HEIGHT + 1; y++) {
     const row = document.createElement("tr");
     row.setAttribute("id", `row-${y}`);
 
     for (let x = 0; x < WIDTH; x++) {
-      // TODO: Create a table cell element and assign to a "cell" variable
       const cell = document.createElement("td");
       cell.setAttribute("id", `c-${y}-${x}`);
       row.append(cell);
 
-      // TODO: add an id, c-y-x, to the above table cell element
-      // you'll use this later, so make sure you use c-y-x
-
-      // TODO: append the table cell to the table row
-
     }
-    // TODO: append the row to the html board
     htmlBoard.append(row);
   }
 }
@@ -160,5 +151,5 @@ function checkForWin() {
   }
 }
 
-makeBoardMatrix();
+makeBoard();
 makeHtmlBoard();

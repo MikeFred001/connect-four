@@ -10,7 +10,7 @@
 const WIDTH = 7;
 const HEIGHT = 6;
 
-const currPlayer = 1; // active player: 1 or 2
+let currPlayer = 1; // active player: 1 or 2
 let board = []; // array of rows, each row is array of cells  (board[y][x])
 
 /** makeBoard: create in-JS board structure:
@@ -18,15 +18,15 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
  */
 
 function makeBoard() {
-  const board = [];
-  for (let i = 0; i < HEIGHT + 1; i++) {
-    const row = [];
+  for (let i = 0; i < HEIGHT; i++) {
+    let row = [];
     for (let j = 0; j < WIDTH; j++) {
       row.push(null);
     }
     board.push(row);
   }
   console.log(board);
+  console.log(board.length);
   return board;
 }
 
@@ -51,7 +51,7 @@ function makeHtmlBoard() {
   // dynamically creates the main part of html board
   // uses HEIGHT to create table rows
   // uses WIDTH to create table cells for each row
-  for (let y = 0; y < HEIGHT + 1; y++) {
+  for (let y = 0; y < HEIGHT; y++) {
     const row = document.createElement("tr");
     row.setAttribute("id", `row-${y}`);
 
@@ -63,6 +63,7 @@ function makeHtmlBoard() {
     }
     htmlBoard.append(row);
   }
+
 }
 
 /** findSpotForCol: given column x, return bottom empty y (null if filled) */

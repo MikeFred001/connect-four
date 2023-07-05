@@ -19,7 +19,16 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
  */
 
 function makeBoardMatrix() {
-  // TODO: set "board" to empty HEIGHT x WIDTH matrix array
+  const board = [];
+  for (let i = 0; i < HEIGHT; i++) {
+    const row = [];
+    for (let j = 0; j < WIDTH; j++) {
+      row.push(null);
+    }
+    board.push(row);
+  }
+  console.log(board);
+  return board;
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
@@ -133,18 +142,18 @@ function checkForWin() {
       // each should be an array of 4 cell coordinates:
       // [ [y, x], [y, x], [y, x], [y, x] ]
 
-      let horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
-      let vert;
-      let diagDL;
-      let diagDR;
+      let row = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
+      let column;
+      let diagDownLeft;
+      let diagDownRight;
 
       // find winner (only checking each win-possibility as needed)
-      if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
+      if (_win(row) || _win(column) || _win(diagDownRight) || _win(diagDownLeft)) {
         return true;
       }
     }
   }
 }
 
-makeBoard();
+makeBoardMatrix();
 makeHtmlBoard();

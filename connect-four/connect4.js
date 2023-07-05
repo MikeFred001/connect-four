@@ -142,13 +142,13 @@ function checkForWin() {
       // each should be an array of 4 cell coordinates:
       // [ [y, x], [y, x], [y, x], [y, x] ]
 
-      let row = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
-      let column;
+      let vertical = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
+      let horizontal;
       let diagDownLeft;
       let diagDownRight;
 
       // find winner (only checking each win-possibility as needed)
-      if (_win(row) || _win(column) || _win(diagDownRight) || _win(diagDownLeft)) {
+      if (_win(vertical) || _win(horizontal) || _win(diagDownRight) || _win(diagDownLeft)) {
         return true;
       }
     }

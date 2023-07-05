@@ -56,11 +56,12 @@ function makeHtmlBoard() {
     // TODO: Create a table row element and assign to a "row" variable
     const row = document.createElement("tr");
     row.setAttribute("id", `row-${y}`);
-    row.setAttribute("rowNum", `${y}`);
 
     for (let x = 0; x < WIDTH; x++) {
       // TODO: Create a table cell element and assign to a "cell" variable
       const cell = document.createElement("td");
+      cell.setAttribute("id", `c-${y}-${x}`);
+      row.append(cell);
 
       // TODO: add an id, c-y-x, to the above table cell element
       // you'll use this later, so make sure you use c-y-x
@@ -69,7 +70,7 @@ function makeHtmlBoard() {
 
     }
     // TODO: append the row to the html board
-
+    htmlBoard.append(row);
   }
 }
 

@@ -79,8 +79,7 @@ function placeInTable(y, x) {
   let targetCell = document.getElementById(`c-${y}-${x}`);
 
   let piece = document.createElement("div");
-  piece.setAttribute("class", "piece")
-  piece.setAttribute("class", `p${currPlayer}`);
+  piece.setAttribute("class", `piece p${currPlayer}`);
 
   targetCell.append(piece);
 }

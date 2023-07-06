@@ -87,14 +87,6 @@ function placeInTable(y, x) {
   targetCell.append(piece);
 }
 
-function areAllSpotsFilled() {
-  let areTheyFilled = false;
-  for (let row of board) {
-    if (row.every(cell => (cell === null))) {
-    }
-  }
-}
-
 /** endGame: announce game end */
 
 function endGame(msg) {

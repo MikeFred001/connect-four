@@ -84,6 +84,16 @@ function placeInTable(y, x) {
   targetCell.append(piece);
 }
 
+function areAllSpotsFilled{
+  let areTheyFilled = false;
+  for (let row of board) {
+    if (row.every(cell => (cell === null))){
+
+    }
+  }
+
+}
+
 /** endGame: announce game end */
 
 function endGame(msg) {
@@ -106,6 +116,7 @@ function handleClick(evt) {
   // TODO: add line to update in-memory board
   placeInTable(y, x);
 
+  
   // check for win
   if (checkForWin()) {
     return endGame(`Player ${currPlayer} won!`);
@@ -115,7 +126,11 @@ function handleClick(evt) {
   // TODO: check if all cells in board are filled; if so call, call endGame
 
   // switch players
-  // TODO: switch currPlayer 1 <-> 2
+  if (currPlayer === 1) {
+    currPlayer = 2;
+  } else {
+    currPlayer = 1;
+  }
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */

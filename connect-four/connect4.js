@@ -10,7 +10,7 @@
 const WIDTH = 7;
 const HEIGHT = 6;
 
-const currPlayer = 1; // active player: 1 or 2
+let currPlayer = 1; // active player: 1 or 2
 let board = []; // array of rows, each row is array of cells  (board[y][x])
 
 /** makeBoard: create in-JS board structure:
@@ -18,9 +18,9 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
  */
 //TODO use x and y;
 function makeBoard() {
-  for (let i = 0; i < HEIGHT; i++) {
+  for (let x = 0; x < HEIGHT; x++) {
     let row = [];
-    for (let j = 0; j < WIDTH; j++) {
+    for (let y = 0; y < WIDTH; y++) {
       row.push(null);
     }
     board.push(row);
@@ -76,6 +76,13 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+  let targetCell = document.getElementById(`c-${y}-${x}`);
+
+  let piece = document.createElement("div");
+  piece.setAttribute("class", "piece")
+  piece.setAttribute("class", `p${currPlayer}`);
+
+  targetCell.append(piece);
 }
 
 /** endGame: announce game end */

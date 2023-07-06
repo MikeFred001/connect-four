@@ -42,7 +42,7 @@ function makeHtmlBoard() {
   // Adds cells to top row
   for (let x = 0; x < WIDTH; x++) {
     const headCell = document.createElement("td");
-    headCell.setAttribute("id", `top-${x}`);
+    headCell.setAttribute("id", `${x}`);
     topRow.append(headCell);
   }
   htmlBoard.append(topRow);
@@ -68,8 +68,11 @@ function makeHtmlBoard() {
 /** findSpotForCol: given column x, return bottom empty y (null if filled) */
 
 function findSpotForCol(x) {
-  // TODO: write the real version of this, rather than always returning 5
-  return 5;
+  for (let i = board.length - 1; i >= 0; i--) {
+    if (!(board[i][x])) {
+      return i;
+    }
+  }
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
@@ -84,14 +87,12 @@ function placeInTable(y, x) {
   targetCell.append(piece);
 }
 
-function areAllSpotsFilled{
+function areAllSpotsFilled() {
   let areTheyFilled = false;
   for (let row of board) {
-    if (row.every(cell => (cell === null))){
-
+    if (row.every(cell => (cell === null))) {
     }
   }
-
 }
 
 /** endGame: announce game end */
@@ -116,7 +117,12 @@ function handleClick(evt) {
   // TODO: add line to update in-memory board
   placeInTable(y, x);
 
-  
+  if (currPlayer === 1) {
+    board[y][x] === 1;
+  } else {
+    board[y][x] === 2;
+  }
+
   // check for win
   if (checkForWin()) {
     return endGame(`Player ${currPlayer} won!`);
